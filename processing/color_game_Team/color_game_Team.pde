@@ -1,12 +1,13 @@
 /*------------------------INSTRUCTION------------------------
 CODE:
-double check the serial port before run
-portA is bluetooth 05
-portB is bluetooth 06
+Double check the serial port before run
+PortA is bluetooth 05
+PortB is bluetooth 06
+if want to test without bluetooth, comment out the serial port
 
 GAMEPLAY:
-press space bar to start and go to next level
-press r to reset the whole game
+Press space bar to start and go to next level
+Press r to reset the whole game
 
 Miyeon & Yue
 Feb 25, 2017
@@ -114,6 +115,8 @@ void draw() {
 
   switch (gameState) {
   case 0:
+    image(bg0, 0, 0, width, height);
+    
     titleState();  
     bgMusic.play();
     count.draw();
@@ -124,7 +127,7 @@ void draw() {
   case 1:
     //fill(50, 150, 255);
     //rect(0, 0, width, height);
-    image(bg3, 0, 0, width, height);
+    image(bg1, 0, 0, width, height);
 
     count.draw();
     count.readyStart();
@@ -133,7 +136,7 @@ void draw() {
     break;
 
   case 2:
-    image(bg3, 0, 0, width, height);
+    image(bg2, 0, 0, width, height);
     //background(255, 239, 211);
     showTime();
 
@@ -165,7 +168,6 @@ void draw() {
 }
 
 void titleState() {
-  image(bg0, 0, 0, width, height);
   textFont(titleItalic);
   textAlign(CENTER);
   textSize(titleS);
@@ -174,8 +176,8 @@ void titleState() {
 
   textFont(subtitle);
   textAlign(CENTER);
-  textSize(mainS);
-  fill(10, 255, 192);
+  textSize(textS);
+  fill(255);
   text("Press SPACE to START", width/2, 11*height/16);
 }
 
@@ -203,7 +205,7 @@ void winState() {
     textFont(subtitle);
     textSize(textS);
     fill(255);
-    text("SPACE to TRY AGAIN", width/2, height/12);
+    text("press SPACE to try again", width/2, height/12);
     
     textSize(mainS);
     text("You made it in ", width/2+teamA.posX, 10*height/16);
@@ -223,7 +225,7 @@ void winState() {
     textFont(subtitle);
     textSize(textS);
     fill(255);
-    text("SPACE to TRY AGAIN", width/2, height/12);
+    text("press SPACE to try again", width/2, height/12);
     
     textSize(mainS);
     text("You made it in ", width/2+teamB.posX, 10*height/16);
@@ -232,20 +234,21 @@ void winState() {
   } else if (teamA.level == 10 && teamB.level == 10) {
     screen();
 
-    textFont(subtitle);;
-    textSize(subtitleS);
+    textFont(main);
+    textSize(mainS);
     fill(255);
     text("It's a TIE!", width/2, 9*height/16);
     
+    textFont(subtitle);
     textSize(textS);
-    text("SPACE to try one more time", width/2, height/12);
+    text("press SPACE to try again", width/2, 11*height/16);
   } else if (teamA.level != 10 && teamB.level != 10) {
     screen();
 
-    textFont(subtitle);
+    textFont(main);
     textSize(subtitleS);
     fill(255);
-    text("SPACE to restart", width/2, 9*height/16);
+    text("press SPACE to restart", width/2, 9*height/16);
   }
 }
 
