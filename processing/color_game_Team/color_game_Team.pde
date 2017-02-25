@@ -1,3 +1,17 @@
+/*------------------------INSTRUCTION------------------------
+CODE:
+double check the serial port before run
+portA is bluetooth 05
+portB is bluetooth 06
+
+GAMEPLAY:
+press space bar to start and go to next level
+press r to reset the whole game
+
+Miyeon & Yue
+Feb 25, 2017
+-----------------------------------------------------------*/
+
 import processing.video.*;
 import ddf.minim.*;
 import processing.serial.*;
@@ -47,10 +61,10 @@ void setup() {
    Serial Port
    ------------------------------------------------------------------------*/
   println(Serial.list());
-  //portA = new Serial(this, Serial.list()[1], 9600);
-  //portB = new Serial(this, Serial.list()[2], 9600);
-  //portA.bufferUntil('\n');
-  //portB.bufferUntil('\n');
+  portA = new Serial(this, Serial.list()[1], 9600);
+  portB = new Serial(this, Serial.list()[2], 9600);
+  portA.bufferUntil('\n');
+  portB.bufferUntil('\n');
 
   /*------------------------------------------------------------------------
    Font
@@ -70,8 +84,6 @@ void setup() {
   textS = width/32;
   noteS = width/48;
 
-  //fontList[4] = createFont("Prisma.ttf", 2);
-  //fontList[5] = createFont("5x5_pixel.ttf", 2);
 
   /*------------------------------------------------------------------------
    AV
@@ -103,7 +115,7 @@ void draw() {
   switch (gameState) {
   case 0:
     titleState();  
-    //bgMusic.play();
+    bgMusic.play();
     count.draw();
 
     println("case0: title");
