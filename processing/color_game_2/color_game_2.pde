@@ -31,7 +31,7 @@ int y = int(x);
 float a = random(0, 5);
 int b = int(a);
 int old_y = -1;
-float c = random(0,2);
+float c = random(0, 2);
 int d = int(c);
 
 Timer timer;
@@ -49,7 +49,7 @@ Timer timer;
 
 void setup() {
   println(Serial.list());
-  port = new Serial(this, Serial.list()[3], 9600);
+  port = new Serial(this, Serial.list()[2], 9600);
   port.bufferUntil('\n');
 
   background (0);
@@ -82,7 +82,7 @@ void setup() {
   //bg9 = loadImage("bg9.png");
   //bg10 = loadImage("bg10.png");
   //bg11 = loadImage("bg11.png");
-  
+
   bg0 = loadImage("bg0.png");
   bg1 = loadImage("bg1.png");
   bg2 = loadImage("bg8.png");
@@ -118,7 +118,7 @@ void draw() {
     //background(255, 239, 211);
     timer.start();
     gamePlay();
-      showScore();
+    showScore();
     println("case1, y value: "+y);
 
     if ((sensors-1) == y) {
@@ -139,7 +139,7 @@ void draw() {
   case 3:
     //image(bg2, 0, 0, width, height);
     //background(208, 236, 234);
-        gamePlay();
+    gamePlay();
     showScore();
     println("case2, y value: "+y);
 
@@ -161,7 +161,7 @@ void draw() {
   case 4:
     //image(bg3, 0, 0, width, height);
     //background(159, 214, 210);
-        gamePlay();
+    gamePlay();
     showScore();
     println("case3, y value: "+y );
 
@@ -184,7 +184,7 @@ void draw() {
   case 5:
     //image(bg4, 0, 0, width, height);
     //background(255, 216, 216);
-        gamePlay();
+    gamePlay();
     showScore();
     println("case4, y value: "+y );
 
@@ -206,7 +206,7 @@ void draw() {
   case 6:
     //image(bg5, 0, 0, width, height);
     //background(248, 218, 251);
-        gamePlay();
+    gamePlay();
     showScore();
     println("case5, y value: "+y );
 
@@ -221,7 +221,7 @@ void draw() {
       nextMusic.rewind();
       println("music on");
     }
-nextMusic.close();
+    nextMusic.close();
     break;
 
 
@@ -388,7 +388,6 @@ void winState() {
   text ("YOUR TIME: "+ nf(timer.minute(), 2)+":"+nf(timer.second(), 2), width/2.8, height/1.4);
 }
 
-
 void generateNextRandomY() {
   a = random(0, 5);
   b = int(a);
@@ -398,8 +397,6 @@ void generateNextRandomY() {
     generateNextRandomY();
   }
 }
-
-
 
 void mousePressed() {
   if (gameState<13) {
@@ -411,9 +408,6 @@ void mousePressed() {
     lives++;
   }
 }
-
-
-
 
 void serialEvent(Serial port) {
   if (port.available()>0) {
