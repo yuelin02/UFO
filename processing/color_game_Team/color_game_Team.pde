@@ -26,8 +26,8 @@ AudioPlayer bgMusic, hitMusic, nextMusic, yesMusic;
 PImage bg0, bg1, bg2, bg3;
 PFont[] fontList = new PFont[3];
 String[] nameOfColors = {"ORANGE", "GREEN", "PURPLE", "BLUE", "YELLOW", "RED"};
-color[] myColors = {color(255, 0, 0), color(255, 255, 0), color(0, 0, 255), color(255, 130, 20), 
-  color(0, 255, 0), color(160, 32, 250)};
+color[] myColors = {color(255, 30, 30), color(255, 255, 0), color(40, 40, 255), color(255, 130, 20), 
+  color(30, 255, 30), color(160, 32, 250)};
 
 
 PFont main;
