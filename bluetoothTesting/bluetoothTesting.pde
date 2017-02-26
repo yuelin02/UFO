@@ -8,7 +8,7 @@ void setup() {
   background(0);
   size(400, 400);
   println(Serial.list());
-  port = new Serial(this, Serial.list()[3], 9600);
+  port = new Serial(this, Serial.list()[2], 9600);
 }
 
 void draw() {

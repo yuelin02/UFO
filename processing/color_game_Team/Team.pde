@@ -1,17 +1,17 @@
 class Team {
   int level = -1;
-  int lives = 0;
-  int sensors;
+  int lives = -1;
+  //int sensors;
   int posX, posY, w, h;
 
-  //int y = int(random(nameOfColors.length));
-  int y = int(random(0, 5));
-  //int b = int(random(nameOfColors.length));
-  int b = int(random(0, 5));
+  //float x = random(0, 5);
+  int y = int(random(nameOfColors.length));
+  //float a = random(0, 5);
+  int b = int(random(nameOfColors.length));
   int old_y = -1;
   int d = int(random(3));
 
-  void levelChange() {
+  void levelChange(int sensors) {
     switch(level) {
     case -1:   
       timer.start();
@@ -174,8 +174,8 @@ class Team {
       println("level8, y value: "+y);
 
       if ((sensors-1) == y) {
-        old_y = y;
         generateNextRandomY();
+        old_y = y;
         level++;
         lives++;
         println("R is here");
@@ -244,8 +244,8 @@ class Team {
 
   void generateNextRandomY() {
     println("this works!!!!!!!!!!");
-    b = int(random(0, 5));
-    y = int(random(0, 5));
+    b = int(random(nameOfColors.length));
+    y = int(random(nameOfColors.length));
     if (y == old_y) {
       generateNextRandomY();
     }
@@ -270,30 +270,8 @@ class Team {
 
   void reset() {
     level = -1;
-    lives = 0;
+    lives = -1;
   }
 
-  void serialEvent(Serial port) {
-    if (port.available()>0) {
-      String inString = port.readStringUntil('\n');
-      if (inString != null) {
-        inString=trim(inString);
-        println(inString);
 
-        if (port == portA) {
-          //println("A working");
-          teamA.sensors = int(inString);
-          //println(teamA.sensors);
-          //println(split(inString, ','));
-        }
-
-        if (port == portB) {
-          //println("B working");
-          teamB.sensors = int(inString);
-          //println(teamB.sensors);
-          //println(split(inString, ','));
-        }
-      }
-    }
-  }
 }

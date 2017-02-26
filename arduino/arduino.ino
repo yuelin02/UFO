@@ -20,7 +20,7 @@ int state = 0;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  BTserial.begin(9600);
+  BTserial.begin(9600);//06
   //  BTserial.println("Hello from Arduino");
 }
 
@@ -35,22 +35,22 @@ void loop() {
 //  Serial.println(pinBlueVal);
 
   if ((pinRedVal <= 10) && (pinYellowVal <= 10) && (pinBlueVal <= 10)) {
-    state = 0;
+    state = 7;
   } else if ((pinRedVal >= 990) && (pinRedVal <= 1020)) {
-    state = 1;
+    state = 8;
   } else if ((pinYellowVal >= 670) && (pinYellowVal <= 700)) {
-    state = 2;
+    state = 9;
   } else if ((pinBlueVal >= 320) && (pinBlueVal <= 350)) {
-    state = 3;
+    state = 10;
   } else if (((pinRedVal >= 670) && (pinRedVal <= 700)) || ((pinYellowVal >= 990) && (pinYellowVal <= 1020))) {
-    state = 4;
+    state = 11;
   } else if (((pinYellowVal >= 320) && (pinYellowVal <= 350)) || ((pinBlueVal >= 670) && (pinBlueVal <= 700))) {
-    state = 5;
+    state = 12;
   } else if (((pinBlueVal >= 990) && (pinBlueVal <= 1020)) || ((pinRedVal >= 320) && (pinRedVal <= 350))) {
-    state = 6;
-  }
+    state = 13;
+  } 
 
   delay(100);
   BTserial.println(state);
-  Serial.println(state);
+//  Serial.println(state);
 }

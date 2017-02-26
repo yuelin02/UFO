@@ -49,7 +49,7 @@ Timer timer;
 
 void setup() {
   println(Serial.list());
-  port = new Serial(this, Serial.list()[2], 9600);
+  port = new Serial(this, Serial.list()[1], 115200);
   port.bufferUntil('\n');
 
   background (0);
